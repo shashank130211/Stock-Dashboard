@@ -43,20 +43,22 @@ with fundamental_data:
     cf = cash_flow.T[2:]
     cf.columns = list(cash_flow.T.iloc[0])
     st.write(cf)
-from stocknews import StockNews   
+
+from stocknews import StockNews
 with news:
+   from stocknews import StockNews 
    st.header(f'News of {ticker}')
    sn = StockNews(ticker,save_news=False)
    df_news = sn.read_rss()
-for i in range(10):
-    st.header(f'News {i+1}')
-    st.write(df_news['published'][i])
-    st.write(df_news['title'][i])
-    st.write(df_news['summary'][i])
-    title_sentiment = df_news['sentiment_title'][i]
-    st.write(f'Title Sentiment {title_sentiment}')
-    news_sentiment = df_news['sentiment_summary'][i]
-    st.write(f'News sentiment {news_sentiment}')
+   for i in range(10):
+     st.subheader(f'News {i+1}')
+     st.write(df_news['published'][i])
+     st.write(df_news['title'][i])
+     st.write(df_news['summary'][i])
+     title_sentiment = df_news['sentiment_title'][i]
+     st.write(f'Title Sentiment {title_sentiment}')
+     news_sentiment = df_news['sentiment_summary'][i]
+     st.write(f'News Sentiment {news_sentiment}') 
 
 
 
